@@ -11,3 +11,13 @@
 .screen-header__icons span {
     margin-left: 25px;
 }
+.screen-header__dot {
+    background-color: tomato;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    display: flex;
+    position: absolute;
+    right: 15px;
+    top: 60px;
+}
