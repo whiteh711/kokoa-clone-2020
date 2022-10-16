@@ -1,6 +1,6 @@
 .chat-screen {
     background-color: #abc1d1;
-    height: 11000vh;
+    height: 500vh;
 }
 .chat-screen__status-bar {
     display: flex;
@@ -22,6 +22,8 @@
 .chat-screen .alt-header {
     top: 20px;
 }
+
+
 .main-chat {
     margin-top: 80px;
     display: flex;
@@ -37,10 +39,24 @@
     font-size: 14px;
     margin-bottom: 25px;
 }
+
+@keyframes fadeInLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
 .message-row {
     width: 100%;
     display: flex;
     margin-bottom: 25px;
+    z-index: -1;
+    animation: fadeInLeft 1s ease-in-out;
 }
 .message-row img {
     width: 40px;
@@ -70,8 +86,22 @@
     font-size: 12px;
     opacity: 0.7;
 }
+
+@keyframes fadeInRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
 .message-row--own {
+    opacity: 0;
     justify-content: flex-end;
+    animation: fadeInRight 1s ease-in-out forwards;
+    animation-delay: 1s;
 }
 .message-row--own .message__bubble {
     background-color: #fae100;
@@ -90,6 +120,7 @@
     justify-content: space-between;
     padding: 8px 25px;
     align-items: center;
+    transition: all 0.3s ease-in-out;
 }
 
 .reply .reply__column:first-child {
@@ -105,6 +136,7 @@
     width: 100%;
     border: var(--main-border);
     border-radius: 18px;
+    transition: all 0.3s ease-in-out;
 }
 .reply__column:last-child > i,
 .reply button {
@@ -133,4 +165,24 @@
 .reply__column button:focus
 .reply__column button:active {
     outline: none;
+}
+
+.reply .reply__column:first-child,
+.reply .fa-smile,
+.reply button {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-smile,
+.reply:focus-within button {
+    opacity: 0;
+}
+
+.reply input:focus {
+    width: 90vw;
+    transform: translateX(-13%) translateY(-80px);
+}
+.reply:focus-within {
+    transform: translateY(80px);
 }
